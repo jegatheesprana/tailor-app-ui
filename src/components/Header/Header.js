@@ -8,7 +8,7 @@ import {
   MenuItem,
   Fab,
   Link
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -17,7 +17,7 @@ import {
   Search as SearchIcon,
   Send as SendIcon,
   ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import classNames from "classnames";
 
 // styles
@@ -115,7 +115,7 @@ export default function Header(props) {
             classes.headerMenuButtonSandwich,
             classes.headerMenuButtonCollapse,
           )}
-        >
+          size="large">
           {layoutState.isSidebarOpened ? (
             <ArrowBackIcon
               classes={{
@@ -171,7 +171,7 @@ export default function Header(props) {
             setIsNotificationsUnread(false);
           }}
           className={classes.headerMenuButton}
-        >
+          size="large">
           <Badge
             badgeContent={isNotificationsUnread ? notifications.length : null}
             color="warning"
@@ -188,7 +188,7 @@ export default function Header(props) {
             setIsMailsUnread(false);
           }}
           className={classes.headerMenuButton}
-        >
+          size="large">
           <Badge
             badgeContent={isMailsUnread ? messages.length : null}
             color="secondary"
@@ -202,7 +202,7 @@ export default function Header(props) {
           className={classes.headerMenuButton}
           aria-controls="profile-menu"
           onClick={e => setProfileMenu(e.currentTarget)}
-        >
+          size="large">
           <AccountIcon classes={{ root: classes.headerIcon }} />
         </IconButton>
         <Menu

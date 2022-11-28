@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  Drawer,
-  IconButton,
-  List,
-  withStyles } from "@material-ui/core";
+import { Drawer, IconButton, List } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import {
   Home as HomeIcon,
   NotificationsNone as NotificationsIcon,
@@ -14,7 +11,7 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import classNames from 'classnames';
 
 import SidebarLink from './components/SidebarLink/SidebarLinkContainer';
@@ -65,9 +62,7 @@ const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermane
       open={isSidebarOpened}
     >
       <div className={classes.mobileBackButton}>
-        <IconButton
-          onClick={toggleSidebar}
-        >
+        <IconButton onClick={toggleSidebar} size="large">
           <ArrowBackIcon classes={{ root: classNames(classes.headerIcon, classes.headerIconCollapse) }} />
         </IconButton>
       </div>
@@ -93,7 +88,7 @@ const styles = theme => ({
     flexShrink: 0,
     whiteSpace: 'nowrap',
     top: theme.spacing.unit * 8,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       top: 0,
     }
   },
@@ -111,13 +106,13 @@ const styles = theme => ({
     }),
     overflowX: 'hidden',
     width: theme.spacing.unit * 7 + 40,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       width: drawerWidth,
     }
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none',
     }
   },

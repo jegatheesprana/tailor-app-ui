@@ -1,5 +1,5 @@
-import { makeStyles } from "@material-ui/styles";
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import { makeStyles } from "@mui/styles";
+import { alpha } from '@mui/material/styles';
 
 export default makeStyles(theme => ({
   logotype: {
@@ -9,7 +9,7 @@ export default makeStyles(theme => ({
     fontWeight: 500,
     fontSize: 18,
     whiteSpace: "nowrap",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       display: "none",
     },
   },
@@ -36,15 +36,15 @@ export default makeStyles(theme => ({
     borderRadius: 25,
     paddingLeft: theme.spacing(2.5),
     width: 36,
-    backgroundColor: fade(theme.palette.common.black, 0),
+    backgroundColor: alpha(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: fade(theme.palette.common.black, 0.08),
+      backgroundColor: alpha(theme.palette.common.black, 0.08),
     },
   },
   searchFocused: {
-    backgroundColor: fade(theme.palette.common.black, 0.08),
+    backgroundColor: alpha(theme.palette.common.black, 0.08),
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 250,
@@ -99,7 +99,7 @@ export default makeStyles(theme => ({
   },
   headerMenuButtonSandwich: {
     marginLeft: 9,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: 0
     },
     padding: theme.spacing(0.5),
@@ -167,7 +167,7 @@ export default makeStyles(theme => ({
     marginLeft: theme.spacing(2),
   },
   purchaseBtn: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none'
     },
     marginRight: theme.spacing(3)

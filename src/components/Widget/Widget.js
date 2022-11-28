@@ -5,8 +5,8 @@ import {
   Menu,
   MenuItem,
   Typography,
-} from "@material-ui/core";
-import { MoreVert as MoreIcon } from "@material-ui/icons";
+} from "@mui/material";
+import { MoreVert as MoreIcon } from "@mui/icons-material";
 import classnames from "classnames";
 
 // styles
@@ -55,7 +55,7 @@ export default function Widget({
                   aria-haspopup="true"
                   onClick={() => setMoreMenuOpen(true)}
                   buttonRef={setMoreButtonRef}
-                >
+                  size="large">
                   <MoreIcon />
                 </IconButton>
               )}

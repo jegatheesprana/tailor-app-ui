@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import { Button, Grid } from "@mui/material";
+import { useTheme } from "@mui/styles";
 import {
   CartesianGrid,
   Legend,

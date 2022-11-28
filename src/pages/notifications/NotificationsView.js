@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, withStyles } from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+import { Grid } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
+import { Close as CloseIcon } from '@mui/icons-material';
 import classnames from 'classnames';
 import { ToastContainer } from 'react-toastify';
 import SyntaxHighlighter from 'react-syntax-highlighter';

@@ -1,14 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import {
-  Paper,
-  IconButton,
-  Menu,
-  MenuItem,
-  withStyles
-} from "@material-ui/core";
-import { MoreVert as MoreIcon } from "@material-ui/icons";
-import Typography from "@material-ui/core/es/Typography/Typography";
+import { Paper, IconButton, Menu, MenuItem } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
+import { MoreVert as MoreIcon } from "@mui/icons-material";
+import Typography from "@mui/material/es/Typography/Typography";
 
 const Widget = ({
   classes,
@@ -38,7 +33,7 @@ const Widget = ({
                 aria-haspopup="true"
                 onClick={() => props.setMoreMenuOpen(true)}
                 buttonRef={props.setMoreButtonRef}
-              >
+                size="large">
                 <MoreIcon />
               </IconButton>
             )}

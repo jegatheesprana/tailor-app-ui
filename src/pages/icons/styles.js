@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles(theme => ({
   titleBold: {
@@ -14,8 +14,8 @@ export default makeStyles(theme => ({
   },
   materailIcon: {
     display: "flex",
-    paddingLeft: `${theme.spacing(4)}px !important`,
-    paddingRight: `${theme.spacing(4)}px !important`,
+    paddingLeft: `${theme.spacing(4)} !important`,
+    paddingRight: `${theme.spacing(4)} !important`,
     color: theme.palette.text.secondary,
     fontSize: 24,
     overflowX: "hidden",

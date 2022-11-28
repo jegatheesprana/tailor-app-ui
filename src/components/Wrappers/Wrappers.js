@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  withStyles,
-  Badge as BadgeBase,
-  Typography as TypographyBase,
-  Button as ButtonBase,
-} from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/styles";
+import { Badge as BadgeBase, Typography as TypographyBase, Button as ButtonBase } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
+import { useTheme, makeStyles } from "@mui/styles";
 import classnames from "classnames";
 
 // styles

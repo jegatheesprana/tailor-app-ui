@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  InputBase,
-  Menu,
-  MenuItem,
-  Fab,
-  withStyles
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, InputBase, Menu, MenuItem, Fab } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
@@ -17,8 +9,8 @@ import {
   Search as SearchIcon,
   Send as SendIcon,
   ArrowBack as ArrowBackIcon
-} from "@material-ui/icons";
-import { fade } from "@material-ui/core/styles/colorManipulator";
+} from "@mui/icons-material";
+import { alpha } from '@mui/material/styles';
 import classNames from "classnames";
 
 import { Badge, Typography } from "../Wrappers";
@@ -88,7 +80,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           classes.headerMenuButton,
           classes.headerMenuButtonCollapse
         )}
-      >
+        size="large">
         {isSidebarOpened ? (
           <ArrowBackIcon
             classes={{
@@ -132,7 +124,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         aria-controls="mail-menu"
         onClick={props.openNotificationsMenu}
         className={classes.headerMenuButton}
-      >
+        size="large">
         <Badge
           badgeContent={
             props.isNotificationsUnread ? notifications.length : null
@@ -148,7 +140,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         aria-controls="mail-menu"
         onClick={props.openMailMenu}
         className={classes.headerMenuButton}
-      >
+        size="large">
         <Badge
           badgeContent={props.isMailsUnread ? messages.length : null}
           color="secondary"
@@ -162,7 +154,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         className={classes.headerMenuButton}
         aria-controls="profile-menu"
         onClick={props.openProfileMenu}
-      >
+        size="large">
         <AccountIcon classes={{ root: classes.headerIcon }} />
       </IconButton>
       <Menu
@@ -304,7 +296,7 @@ const styles = theme => ({
     fontWeight: 500,
     fontSize: 18,
     whiteSpace: "nowrap",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       display: "none"
     }
   },
@@ -331,15 +323,15 @@ const styles = theme => ({
     borderRadius: 25,
     paddingLeft: theme.spacing.unit * 2.5,
     width: 36,
-    backgroundColor: fade(theme.palette.common.black, 0),
+    backgroundColor: alpha(theme.palette.common.black, 0),
     transition: theme.transitions.create(["background-color", "width"]),
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: fade(theme.palette.common.black, 0.08)
+      backgroundColor: alpha(theme.palette.common.black, 0.08)
     }
   },
   searchFocused: {
-    backgroundColor: fade(theme.palette.common.black, 0.08),
+    backgroundColor: alpha(theme.palette.common.black, 0.08),
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 250

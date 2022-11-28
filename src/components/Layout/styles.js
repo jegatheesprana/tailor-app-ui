@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles(theme => ({
   root: {
@@ -13,7 +13,7 @@ export default makeStyles(theme => ({
     minHeight: "100vh",
   },
   contentShift: {
-    width: `calc(100vw - ${240 + theme.spacing(6)}px)`,
+    width: `calc(100vw - ${240 + theme.spacing(6)})`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

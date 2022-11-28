@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, IconButton, List } from "@material-ui/core";
+import { Drawer, IconButton, List } from "@mui/material";
 import {
   Home as HomeIcon,
   NotificationsNone as NotificationsIcon,
@@ -10,8 +10,8 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
-import { useTheme } from "@material-ui/styles";
+} from "@mui/icons-material";
+import { useTheme } from "@mui/styles";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
 
@@ -118,7 +118,7 @@ function Sidebar({ location }) {
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
+        <IconButton onClick={() => toggleSidebar(layoutDispatch)} size="large">
           <ArrowBackIcon
             classes={{
               root: classNames(classes.headerIcon, classes.headerIconCollapse),
