@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Grid,
   LinearProgress,
   Select,
   OutlinedInput,
   MenuItem,
-  Button
 } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { useTheme } from "@mui/styles";
 import {
   ResponsiveContainer,
@@ -29,7 +35,7 @@ import useStyles from "./styles";
 import mock from "./mock";
 import Widget from "../../components/Widget";
 import PageTitle from "../../components/PageTitle";
-import { Typography } from "../../components/Wrappers";
+import { Typography as TypographyWrapper } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import Table from "./components/Table/Table";
 import BigStat from "./components/BigStat/BigStat";
@@ -41,6 +47,16 @@ const PieChartData = [
   { name: "Group C", value: 300, color: "warning" },
   { name: "Group D", value: 200, color: "success" },
 ];
+const menus = [
+  { name: 'Measurement', description: 'Measurement is the quantification of attributes of an object or event, which can be used to compare with other objects or events.', to: '/app/measurements', img: '/static/menus/measurements.jpg' },
+  { name: 'Customer', description: 'Recipient of a good, service, product or an idea - obtained from a seller, vendor', to: '/app/customers', img: '/static/menus/customers.png' },
+  { name: 'Work Order', description: 'A task or a job for a customer, that can be scheduled or assigned to someone.', to: '/app/workOrders', img: '/static/menus/workOrders.png' },
+  { name: 'CoatRenting', description: 'Renting, also known as hiring or letting, is an agreement', to: '/app/coatRentings', img: '/static/menus/coatRentings.jpg' },
+  { name: 'Products', description: 'In marketing, a product is an object, or system, or service made available for consumer use as of the consumer demand', to: '/app/products', img: '/static/menus/products.jpg' },
+  { name: 'Materials', description: 'Material is a substance or mixture of substances that constitutes an object. Materials can be pure or impure, living or non-living matter.', to: '/app/materials', img: '/static/menus/materials.png' },
+  { name: 'Tailors', description: 'A tailor is a person who makes or alters clothing, particularly in men\'s clothing.', to: '/app/tailors', img: '/static/menus/tailors.png' },
+  { name: 'Payments', description: 'A payment is the voluntary tender of money or its equivalent or of things of value by one party to another in exchange for goods, or services', to: '/app/payments', img: '/static/menus/payments.png' },
+]
 
 export default function Dashboard(props) {
   var classes = useStyles();
@@ -49,14 +65,41 @@ export default function Dashboard(props) {
   // local
   var [mainChartState, setMainChartState] = useState("monthly");
 
+  return <Grid container spacing={4} mt={2}>
+    {menus.map((menu, id) => (
+      <Grid item xs={4} lg={3} md={4} key={id}>
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={menu.img}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {menu.name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {menu.description}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small" component={Link} to={menu.to}>Go</Button>
+            <Button size="small" component={Link} to={menu.to}>Learn More</Button>
+          </CardActions>
+        </Card>
+      </Grid>
+    ))}
+  </Grid>
+
   return <>
     <PageTitle title="Dashboard" button={<Button
-    variant="contained"
-    size="medium"
-    color="secondary"
-  >
+      variant="contained"
+      size="medium"
+      color="secondary"
+    >
       Latest Reports
-  </Button>} />
+    </Button>} />
     <Grid container spacing={4}>
       <Grid item lg={3} md={4} sm={6} xs={12}>
         <Widget
@@ -68,30 +111,30 @@ export default function Dashboard(props) {
           <div className={classes.visitsNumberContainer}>
             <Grid container item alignItems={"center"}>
               <Grid item xs={6}>
-            <Typography size="xl" weight="medium" noWrap>
-              12, 678
-            </Typography>
+                <TypographyWrapper size="xl" weight="medium" noWrap>
+                  12, 678
+                </TypographyWrapper>
               </Grid>
               <Grid item xs={6}>
-            <LineChart
-              width={100}
-              height={30}
-              data={[
-                { value: 10 },
-                { value: 15 },
-                { value: 10 },
-                { value: 17 },
-                { value: 18 },
-              ]}
-            >
-              <Line
-                type="natural"
-                dataKey="value"
-                stroke={theme.palette.success.main}
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
+                <LineChart
+                  width={100}
+                  height={30}
+                  data={[
+                    { value: 10 },
+                    { value: 15 },
+                    { value: 10 },
+                    { value: 17 },
+                    { value: 18 },
+                  ]}
+                >
+                  <Line
+                    type="natural"
+                    dataKey="value"
+                    stroke={theme.palette.success.main}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
               </Grid>
             </Grid>
           </div>
@@ -102,22 +145,22 @@ export default function Dashboard(props) {
             alignItems="center"
           >
             <Grid item xs={4}>
-              <Typography color="text" colorBrightness="secondary" noWrap>
+              <TypographyWrapper color="text" colorBrightness="secondary" noWrap>
                 Registrations
-              </Typography>
-              <Typography size="md">860</Typography>
+              </TypographyWrapper>
+              <TypographyWrapper size="md">860</TypographyWrapper>
             </Grid>
             <Grid item xs={4}>
-              <Typography color="text" colorBrightness="secondary" noWrap>
+              <TypographyWrapper color="text" colorBrightness="secondary" noWrap>
                 Sign Out
-              </Typography>
-              <Typography size="md">32</Typography>
+              </TypographyWrapper>
+              <TypographyWrapper size="md">32</TypographyWrapper>
             </Grid>
             <Grid item xs={4}>
-              <Typography color="text" colorBrightness="secondary" noWrap>
+              <TypographyWrapper color="text" colorBrightness="secondary" noWrap>
                 Rate
-              </Typography>
-              <Typography size="md">3.25%</Typography>
+              </TypographyWrapper>
+              <TypographyWrapper size="md">3.25%</TypographyWrapper>
             </Grid>
           </Grid>
         </Widget>
@@ -132,34 +175,34 @@ export default function Dashboard(props) {
           <div className={classes.performanceLegendWrapper}>
             <div className={classes.legendElement}>
               <Dot color="warning" />
-              <Typography
+              <TypographyWrapper
                 color="text"
                 colorBrightness="secondary"
                 className={classes.legendElementText}
               >
                 Integration
-              </Typography>
+              </TypographyWrapper>
             </div>
             <div className={classes.legendElement}>
               <Dot color="primary" />
-              <Typography
+              <TypographyWrapper
                 color="text"
                 colorBrightness="secondary"
                 className={classes.legendElementText}
               >
                 SDK
-              </Typography>
+              </TypographyWrapper>
             </div>
           </div>
           <div className={classes.progressSection}>
-            <Typography
+            <TypographyWrapper
               size="md"
               color="text"
               colorBrightness="secondary"
               className={classes.progressSectionTitle}
             >
               Integration
-            </Typography>
+            </TypographyWrapper>
             <LinearProgress
               variant="determinate"
               value={77}
@@ -168,14 +211,14 @@ export default function Dashboard(props) {
             />
           </div>
           <div>
-            <Typography
+            <TypographyWrapper
               size="md"
               color="text"
               colorBrightness="secondary"
               className={classes.progressSectionTitle}
             >
               SDK
-            </Typography>
+            </TypographyWrapper>
             <LinearProgress
               variant="determinate"
               value={73}
@@ -193,14 +236,14 @@ export default function Dashboard(props) {
           bodyClass={classes.fullHeightBody}
         >
           <div className={classes.serverOverviewElement}>
-            <Typography
+            <TypographyWrapper
               color="text"
               colorBrightness="secondary"
               className={classes.serverOverviewElementText}
               noWrap
             >
               60% / 37°С / 3.3 Ghz
-            </Typography>
+            </TypographyWrapper>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={getRandomData(10)}>
@@ -217,14 +260,14 @@ export default function Dashboard(props) {
             </div>
           </div>
           <div className={classes.serverOverviewElement}>
-            <Typography
+            <TypographyWrapper
               color="text"
               colorBrightness="secondary"
               className={classes.serverOverviewElementText}
               noWrap
             >
               54% / 31°С / 3.3 Ghz
-            </Typography>
+            </TypographyWrapper>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={getRandomData(10)}>
@@ -241,14 +284,14 @@ export default function Dashboard(props) {
             </div>
           </div>
           <div className={classes.serverOverviewElement}>
-            <Typography
+            <TypographyWrapper
               color="text"
               colorBrightness="secondary"
               className={classes.serverOverviewElementText}
               noWrap
             >
               57% / 21°С / 3.3 Ghz
-            </Typography>
+            </TypographyWrapper>
             <div className={classes.serverOverviewElementChartWrapper}>
               <ResponsiveContainer height={50} width="99%">
                 <AreaChart data={getRandomData(10)}>
@@ -293,12 +336,12 @@ export default function Dashboard(props) {
                 {PieChartData.map(({ name, value, color }, index) => (
                   <div key={color} className={classes.legendItemContainer}>
                     <Dot color={color} />
-                    <Typography style={{ whiteSpace: "nowrap", fontSize: 12 }} >
+                    <TypographyWrapper style={{ whiteSpace: "nowrap", fontSize: 12 }} >
                       &nbsp;{name}&nbsp;
-                    </Typography>
-                    <Typography color="text" colorBrightness="secondary">
+                    </TypographyWrapper>
+                    <TypographyWrapper color="text" colorBrightness="secondary">
                       &nbsp;{value}
-                    </Typography>
+                    </TypographyWrapper>
                   </div>
                 ))}
               </div>
@@ -311,31 +354,31 @@ export default function Dashboard(props) {
           bodyClass={classes.mainChartBody}
           header={
             <div className={classes.mainChartHeader}>
-              <Typography
+              <TypographyWrapper
                 variant="h5"
                 color="text"
                 colorBrightness="secondary"
               >
                 Daily Line Chart
-              </Typography>
+              </TypographyWrapper>
               <div className={classes.mainChartHeaderLabels}>
                 <div className={classes.mainChartHeaderLabel}>
                   <Dot color="warning" />
-                  <Typography className={classes.mainChartLegentElement}>
+                  <TypographyWrapper className={classes.mainChartLegentElement}>
                     Tablet
-                  </Typography>
+                  </TypographyWrapper>
                 </div>
                 <div className={classes.mainChartHeaderLabel}>
                   <Dot color="primary" />
-                  <Typography className={classes.mainChartLegentElement}>
+                  <TypographyWrapper className={classes.mainChartLegentElement}>
                     Mobile
-                  </Typography>
+                  </TypographyWrapper>
                 </div>
                 <div className={classes.mainChartHeaderLabel}>
                   <Dot color="secondary" />
-                  <Typography className={classes.mainChartLegentElement}>
+                  <TypographyWrapper className={classes.mainChartLegentElement}>
                     Desktop
-                  </Typography>
+                  </TypographyWrapper>
                 </div>
               </div>
               <Select

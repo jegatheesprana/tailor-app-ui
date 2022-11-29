@@ -12,49 +12,44 @@ const Add = () => {
 
     const [loading, setLoading] = useState(!!id)
     const [values, setValues] = useState({
+        id: '',
         name: '',
-        value: '',
-        details: '',
-        status: true,
+        contactNumber: '',
+        NIC: ''
     })
 
-
-
     const validationSchema = Yup.object().shape({
+        id: Yup.string()
+            .required("Customer id is required"),
         name: Yup.string()
-            .required("Apartment code is required"),
-        value: Yup.string()
-            .required("Name is required"),
-        // status: Yup.boolean()
-        //     .required("Status is required")
-
+            .required("Customer name is required"),
+        contactNumber: Yup.string()
+            .required("Contact number is required"),
+        NIC: Yup.string()
+            .required("NIC is required"),
     })
 
     const formItems = [
         {
+            name: "id",
+            label: "Customer ID",
+        },
+        {
             name: "name",
             label: "Name",
-            required: true
         },
         {
-            name: "value",
-            label: "Value",
-            required: true
+            name: "contactNumber",
+            label: "Contact Number",
         },
         {
-            name: "details",
-            label: "Details",
-        },
-        {
-            name: "status",
-            label: "Status",
-            required: true,
-            check: true
+            name: "NIC",
+            label: "NIC",
         },
     ]
 
     useEditData(
-        id && '/measurements/' + id,
+        id && '/customers/' + id,
         details => {
             if (id) {
                 setValues(details)
@@ -67,7 +62,7 @@ const Add = () => {
     const handlers = {
         formData: (data) => data,
         afterSubmit: () => {
-            history.push(`/app/measurements`)
+            history.push(`/app/customers`)
         }
     }
 
@@ -77,9 +72,9 @@ const Add = () => {
             loading={loading}
             validationSchema={validationSchema}
             method={id ? 'PUT' : 'POST'}
-            action={id ? '/measurements/' + id : '/measurements'}
+            action={id ? '/customers/' + id : '/customers'}
             values={values}
-            title={id ? 'Edit Measurement' : 'Add Measurement'}
+            title={id ? 'Edit Customer' : 'Add Customer'}
             handlers={handlers}
         />
     )

@@ -15,33 +15,35 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Table() {
+export default function Tailors() {
   const classes = useStyles();
 
   const columns = [
+    { field: 'id', headerName: 'Tailor ID' },
     { field: 'name', headerName: 'Name' },
-    { field: 'value', headerName: 'Value' },
+    { field: 'contactNumber', headerName: 'Contact Number' },
+    { field: 'NIC', headerName: 'NIC' },
   ]
   return (
     <>
-      <PageTitle title="Measurements" button={<Button
+      <PageTitle title="Tailors" button={<Button
         component={Link}
-        to="measurements/add"
+        to="tailors/add"
         variant="contained"
         size="medium"
         color="secondary"
       >
-        Add Measurement
+        Add Tailor
       </Button>} />
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <Widget title="Measurements" upperTitle noBodyPadding disableWidgetMenu bodyClass={classes.tableOverflow}>
+          <Widget title="Tailors" upperTitle noBodyPadding disableWidgetMenu bodyClass={classes.tableOverflow}>
             <DataTable
               columns={columns}
-              itemsUrl="/measurements"
+              itemsUrl="/tailors"
               actions={{
-                editRoute: ({ _id }) => `/app/measurements/edit/${_id}`,
-                delUrl: ({ _id }) => `/measurements/${_id}`
+                editRoute: ({ _id }) => `/app/tailors/edit/${_id}`,
+                delUrl: ({ _id }) => `/tailors/${_id}`
               }}
             />
           </Widget>

@@ -35,6 +35,7 @@ import Charts from "../../pages/charts";
 // Tailor app pages
 import Measurements from "../../pages/measurements";
 import Customers from '../../pages/customers'
+import Tailors from "pages/tailors";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -59,6 +60,7 @@ function Layout(props) {
           <Switch>
             <Route path="/app/measurements" component={Measurements} />
             <Route path="/app/customers" component={Customers} />
+            <Route path="/app/tailors" component={Tailors} />
 
 
             <Route path="/app/dashboard" component={Dashboard} />
