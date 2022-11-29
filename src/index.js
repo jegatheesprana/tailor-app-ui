@@ -8,15 +8,18 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
+import { ToastProvider } from 'context/ToastContext'
 
 ReactDOM.render(
   <LayoutProvider>
-    <UserProvider>
-      <ThemeProvider theme={Themes.default}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
-    </UserProvider>
+    <ToastProvider>
+      <UserProvider>
+        <ThemeProvider theme={Themes.default}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </UserProvider>
+    </ToastProvider>
   </LayoutProvider>,
   document.getElementById("root"),
 );

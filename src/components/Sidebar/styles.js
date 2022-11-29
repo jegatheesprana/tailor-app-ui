@@ -14,6 +14,7 @@ export default makeStyles(theme => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
+
   },
   drawerOpen: {
     width: drawerWidth,
@@ -37,6 +38,7 @@ export default makeStyles(theme => ({
     ...theme.mixins.toolbar,
     [theme.breakpoints.down('md')]: {
       display: "none",
+      minHeight: '64px'
     },
   },
   content: {

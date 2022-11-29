@@ -10,6 +10,13 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
+  ContentCut as ContentCutIcon,
+  Group as GroupIcon,
+  Checkroom as CoatIcon,
+  ShoppingCart as ProductsIcon,
+  Grid4x4 as MaterialsIcon,
+  Person as Tailors,
+  Paid as PaymentIcon
 } from "@mui/icons-material";
 import { useTheme } from "@mui/styles";
 import { withRouter } from "react-router-dom";
@@ -30,7 +37,16 @@ import {
 } from "../../context/LayoutContext";
 
 const structure = [
-  { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+  { label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+  { label: 'Measurement', link: '/app/measurements', icon: <ContentCutIcon /> },
+  { label: 'Customer', link: '/app/customers', icon: <GroupIcon /> },
+  { label: 'Work Order', link: '/app/workOrders', icon: <LibraryIcon /> },
+  { label: 'Coat Renting', link: '/app/coatRentings', icon: <CoatIcon /> },
+  { label: 'Products', link: '/app/products', icon: <ProductsIcon /> },
+  { label: 'Materials', link: '/app/materials', icon: <MaterialsIcon /> },
+  { label: 'Tailors', link: '/app/tailors', icon: <Tailors /> },
+  { label: 'Payments', link: '/app/payments', icon: <PaymentIcon /> },
+
   {
     id: 1,
     label: "Typography",
@@ -93,7 +109,7 @@ function Sidebar({ location }) {
   // local
   var [isPermanent, setPermanent] = useState(true);
 
-  useEffect(function() {
+  useEffect(function () {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
@@ -127,9 +143,9 @@ function Sidebar({ location }) {
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {structure.map(link => (
+        {structure.map((link, id) => (
           <SidebarLink
-            key={link.id}
+            key={id}
             location={location}
             isSidebarOpened={isSidebarOpened}
             {...link}

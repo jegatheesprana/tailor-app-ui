@@ -32,6 +32,10 @@ import Tables from "../../pages/tables";
 // import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
 
+// Tailor app pages
+import Measurements from "../../pages/measurements";
+import Customers from '../../pages/customers'
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -53,6 +57,10 @@ function Layout(props) {
         >
           <div className={classes.fakeToolbar} />
           <Switch>
+            <Route path="/app/measurements" component={Measurements} />
+            <Route path="/app/customers" component={Customers} />
+
+
             <Route path="/app/dashboard" component={Dashboard} />
             <Route path="/app/typography" component={Typography} />
             <Route path="/app/tables" component={Tables} />
@@ -76,32 +84,17 @@ function Layout(props) {
             <div>
               <Link
                 color={'primary'}
-                href={'https://flatlogic.com/'}
+                href={'/'}
                 target={'_blank'}
                 className={classes.link}
               >
-                Flatlogic
+                LONDON CUT
               </Link>
-              <Link
-                color={'primary'}
-                href={'https://flatlogic.com/about'}
-                target={'_blank'}
-                className={classes.link}
-              >
-                About Us
-              </Link>
-              <Link
-                color={'primary'}
-                href={'https://flatlogic.com/blog'}
-                target={'_blank'}
-                className={classes.link}
-              >
-                Blog
-              </Link>
+
             </div>
             <div>
               <Link
-                href={'https://www.facebook.com/flatlogic'}
+                href={''}
                 target={'_blank'}
               >
                 <IconButton aria-label="facebook" size="large">
@@ -113,7 +106,7 @@ function Layout(props) {
                 </IconButton>
               </Link>
               <Link
-                href={'https://twitter.com/flatlogic'}
+                href={''}
                 target={'_blank'}
               >
                 <IconButton aria-label="twitter" size="large">
@@ -125,7 +118,7 @@ function Layout(props) {
                 </IconButton>
               </Link>
               <Link
-                href={'https://github.com/flatlogic'}
+                href={''}
                 target={'_blank'}
               >
                 <IconButton aria-label="github" style={{ marginRight: -12 }} size="large">

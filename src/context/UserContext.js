@@ -20,8 +20,27 @@ function UserProvider({ children }) {
     isAuthenticated: !!localStorage.getItem("id_token"),
   });
 
+  function customFetch(url, { method = 'GET', headers = {}, ...rest } = {}) {
+    return fetch(process.env.REACT_APP_API_HOST + url, {
+      method,
+      // headers: { "Authorization": "Bearer " + token, ...headers },
+      headers: headers,
+      ...rest
+    }).then(res => {
+      if (res.status === 401) {
+        throw new Error("Expired")
+      }
+      return res
+    });
+  }
+
+  const value = {
+    ...state,
+    customFetch
+  }
+
   return (
-    <UserStateContext.Provider value={state}>
+    <UserStateContext.Provider value={value}>
       <UserDispatchContext.Provider value={dispatch}>
         {children}
       </UserDispatchContext.Provider>

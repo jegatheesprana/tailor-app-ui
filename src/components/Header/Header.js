@@ -137,10 +137,10 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          LONDON CUT
         </Typography>
         <div className={classes.grow} />
-        <Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} className={classes.purchaseBtn}>Unlock full version</Button>
+
         <div
           className={classNames(classes.search, {
             [classes.searchFocused]: isSearchOpen,
@@ -290,14 +290,6 @@ export default function Header(props) {
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
               John Smith
-            </Typography>
-            <Typography
-              className={classes.profileMenuLink}
-              component="a"
-              color="primary"
-              href="https://flatlogic.com"
-            >
-              Flalogic.com
             </Typography>
           </div>
           <MenuItem
