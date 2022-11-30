@@ -20,7 +20,7 @@ import logo from "./logo.svg";
 import google from "../../images/google.svg";
 
 // context
-import { useUserDispatch, loginUser } from "../../context/UserContext";
+import { useUserDispatch, loginUser, signUpUser } from "../../context/UserContext";
 
 function Login(props) {
   var classes = useStyles();
@@ -33,14 +33,15 @@ function Login(props) {
   var [error, setError] = useState(null);
   var [activeTabId, setActiveTabId] = useState(0);
   var [nameValue, setNameValue] = useState("");
-  var [emailValue, setEmailValue] = useState("admin@flatlogic.com");
-  var [passwordValue, setPasswordValue] = useState("password");
+  var [shopNameValue, setShopNameValue] = useState("");
+  var [emailValue, setEmailValue] = useState("");
+  var [passwordValue, setPasswordValue] = useState("");
 
   return (
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>Material Admin</Typography>
+        <Typography className={classes.logotypeText}>Tailor App</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>
@@ -56,10 +57,10 @@ function Login(props) {
           </Tabs>
           {activeTabId === 0 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography variant="h3" className={classes.greeting}>
                 Good Morning, User
               </Typography>
-              <Button size="large" className={classes.googleButton}>
+              {/* <Button size="large" className={classes.googleButton}>
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google
               </Button>
@@ -67,7 +68,7 @@ function Login(props) {
                 <div className={classes.formDivider} />
                 <Typography className={classes.formDividerWord}>or</Typography>
                 <div className={classes.formDivider} />
-              </div>
+              </div> */}
               <Fade in={error}>
                 <Typography color="secondary" className={classes.errorMessage}>
                   Something is wrong with your login or password :(
@@ -140,10 +141,10 @@ function Login(props) {
           )}
           {activeTabId === 1 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography variant="h3" className={classes.greeting}>
                 Welcome!
               </Typography>
-              <Typography variant="h2" className={classes.subGreeting}>
+              <Typography variant="h5" className={classes.subGreeting}>
                 Create your account
               </Typography>
               <Fade in={error}>
@@ -151,61 +152,92 @@ function Login(props) {
                   Something is wrong with your login or password :(
                 </Typography>
               </Fade>
-              <TextField
-                id="name"
-                InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
-                value={nameValue}
-                onChange={e => setNameValue(e.target.value)}
-                margin="normal"
-                placeholder="Full Name"
-                type="text"
-                fullWidth
-              />
-              <TextField
-                id="email"
-                InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
-                value={emailValue}
-                onChange={e => setEmailValue(e.target.value)}
-                margin="normal"
-                placeholder="Email Adress"
-                type="email"
-                fullWidth
-              />
-              <TextField
-                id="password"
-                InputProps={{
-                  classes: {
-                    underline: classes.textFieldUnderline,
-                    input: classes.textField,
-                  },
-                }}
-                value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
-                margin="normal"
-                placeholder="Password"
-                type="password"
-                fullWidth
-              />
+
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <TextField
+                    id="name"
+                    InputProps={{
+                      classes: {
+                        underline: classes.textFieldUnderline,
+                        input: classes.textField,
+                      },
+                    }}
+                    value={nameValue}
+                    onChange={e => setNameValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Full Name"
+                    type="text"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="shopName"
+                    InputProps={{
+                      classes: {
+                        underline: classes.textFieldUnderline,
+                        input: classes.textField,
+                      },
+                    }}
+                    value={shopNameValue}
+                    onChange={e => setShopNameValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Shop Name"
+                    type="text"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="email"
+                    InputProps={{
+                      classes: {
+                        underline: classes.textFieldUnderline,
+                        input: classes.textField,
+                      },
+                    }}
+                    value={emailValue}
+                    onChange={e => setEmailValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Email Adress"
+                    type="email"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="password"
+                    InputProps={{
+                      classes: {
+                        underline: classes.textFieldUnderline,
+                        input: classes.textField,
+                      },
+                    }}
+                    value={passwordValue}
+                    onChange={e => setPasswordValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Password"
+                    type="password"
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+
               <div className={classes.creatingButtonContainer}>
                 {isLoading ? (
                   <CircularProgress size={26} />
                 ) : (
                   <Button
                     onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        emailValue,
-                        passwordValue,
+                      signUpUser(
+                        () => setActiveTabId(0),
+                        {
+                          email: emailValue,
+                          password: passwordValue,
+                          name: nameValue,
+                          shopName: shopNameValue
+                        },
                         props.history,
                         setIsLoading,
                         setError,
@@ -226,12 +258,12 @@ function Login(props) {
                   </Button>
                 )}
               </div>
-              <div className={classes.formDividerContainer}>
+              {/* <div className={classes.formDividerContainer}>
                 <div className={classes.formDivider} />
                 <Typography className={classes.formDividerWord}>or</Typography>
                 <div className={classes.formDivider} />
-              </div>
-              <Button
+              </div> */}
+              {/* <Button
                 size="large"
                 className={classnames(
                   classes.googleButton,
@@ -240,12 +272,12 @@ function Login(props) {
               >
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google
-              </Button>
+              </Button> */}
             </React.Fragment>
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic</a>, LLC. All rights reserved.
+          © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="/" rel="noopener noreferrer" target="_blank">Tailor APP</a>, LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>

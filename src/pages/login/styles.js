@@ -13,7 +13,7 @@ export default makeStyles(theme => ({
   },
   logotypeContainer: {
     backgroundColor: theme.palette.primary.main,
-    width: "60%",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -39,7 +39,7 @@ export default makeStyles(theme => ({
     },
   },
   formContainer: {
-    width: "40%",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -50,13 +50,14 @@ export default makeStyles(theme => ({
     },
   },
   form: {
-    width: 320,
+    width: '80%',
   },
   tab: {
     fontWeight: 400,
     fontSize: 18,
   },
   greeting: {
+    fontSize: 1,
     fontWeight: 500,
     textAlign: "center",
     marginTop: theme.spacing(4),
