@@ -24,9 +24,11 @@ const Add = () => {
         name: Yup.string()
             .required("Customer name is required"),
         contactNumber: Yup.string()
-            .required("Contact number is required"),
+            .required("Contact number is required")
+            .matches(/^[0-9]{9,10}$/, 'Phone number is not valid'),
         NIC: Yup.string()
-            .required("NIC is required"),
+            .required("NIC is required")
+            .matches(/^(([0-9]{9}(v|V))|([0-9]{11}))$/, 'NIC is not valid'),
     })
 
     const formItems = [
