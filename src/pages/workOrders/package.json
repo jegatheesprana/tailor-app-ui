@@ -1,0 +1,6 @@
+{
+  "name": "WorkOrders",
+  "version": "0.0.0",
+  "main": "WorkOrders.js",
+  "private": true
+}

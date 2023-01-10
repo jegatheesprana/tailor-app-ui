@@ -40,12 +40,12 @@ const structure = [
   { label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
   { label: 'Measurement', link: '/app/measurements', icon: <ContentCutIcon /> },
   { label: 'Customer', link: '/app/customers', icon: <GroupIcon /> },
-  // { label: 'Work Order', link: '/app/workOrders', icon: <LibraryIcon /> },
-  // { label: 'Coat Renting', link: '/app/coatRentings', icon: <CoatIcon /> },
-  // { label: 'Products', link: '/app/products', icon: <ProductsIcon /> },
-  // { label: 'Materials', link: '/app/materials', icon: <MaterialsIcon /> },
+  { label: 'Work Order', link: '/app/workOrders', icon: <LibraryIcon /> },
+  { label: 'Coat Renting', link: '/app/coatRentings', icon: <CoatIcon /> },
+  { label: 'Products', link: '/app/products', icon: <ProductsIcon /> },
+  { label: 'Materials', link: '/app/materials', icon: <MaterialsIcon /> },
   { label: 'Tailors', link: '/app/tailors', icon: <Tailors /> },
-  // { label: 'Payments', link: '/app/payments', icon: <PaymentIcon /> },
+  { label: 'Payments', link: '/app/payments', icon: <PaymentIcon /> },
 
   // {
   //   id: 1,

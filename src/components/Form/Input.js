@@ -20,7 +20,7 @@ import { FormHelperText } from '@mui/material';
 import Autocomplete from "@mui/material/Autocomplete";
 
 
-const FormInput = ({ name, label, type, error, check, helperText, getFieldProps, setFieldValue, formik, value, values, handleChange, isFullWidth = true, special, autoComplete, ...props }) => {
+const FormInput = ({ name, label, type, error, check, helperText, getFieldProps, setFieldValue, formik, value, values, handleChange, isFullWidth = true, special, autoComplete, date = false, ...props }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => setShowPassword(!showPassword);
@@ -184,7 +184,7 @@ const FormInput = ({ name, label, type, error, check, helperText, getFieldProps,
         var body = (
             <>
                 <MDInput
-                    type={showPassword ? 'text' : type}
+                    type={date ? 'date' : showPassword ? 'text' : type}
                     rows={props.rows}
                     select={props.select}
                     label={label}

@@ -36,6 +36,11 @@ import Charts from "../../pages/charts";
 import Measurements from "../../pages/measurements";
 import Customers from '../../pages/customers'
 import Tailors from "pages/tailors";
+import CoatRentings from "pages/coatRentings";
+import Payments from "pages/payments"
+import Products from "pages/products"
+import Materials from "pages/materials"
+import WorkOrders from "pages/workOrders"
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -61,6 +66,11 @@ function Layout(props) {
             <Route path="/app/measurements" component={Measurements} />
             <Route path="/app/customers" component={Customers} />
             <Route path="/app/tailors" component={Tailors} />
+            <Route path="/app/coatRentings" component={CoatRentings} />
+            <Route path="/app/products" component={Products} />
+            <Route path="/app/materials" component={Materials} />
+            <Route path="/app/payments" component={Payments} />
+            <Route path="/app/workOrders" component={WorkOrders} />
 
 
             <Route path="/app/dashboard" component={Dashboard} />
